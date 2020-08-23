@@ -1,0 +1,39 @@
+{%extends 'blog/base.html'%}
+{%load static%}
+{%block main%}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/about-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>درباره ما</h1>
+            <span class="subheading">با تیم ما آشنا بشید</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  {%for writer in writers%}
+    <header class="masthead" style="background-image: url('{{writer.image.url}}');width:400px;height:600px;float:left">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>{{writer.name}} {{writer.lastname}}</h1>
+              <p>{{writer.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+  {%endfor%}
+
+{%endblock%}
+
+  
