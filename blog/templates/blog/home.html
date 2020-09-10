@@ -8,8 +8,8 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1>وبلاگ یاسین رضایی</h1>
-            <span class="subheading">اینجا با هم در مورد تکنولوژی حرف میزنیم</span>
+            <h1>تکنوفا</h1>
+            <span class="subheading">تازه های تکنولوژی به زبان فارسی</span>
           </div>
         </div>
       </div>
@@ -32,13 +32,20 @@
           <p class="post-meta">نوشته شده توسط
             <a href="#">یاسین</a>
             {{article.jpublish}}</p>
+            <div>
+              {%for cat in article.category_published.all%}
+                    <a href="{%url 'blog:category' cat.slug%}"> #{{cat.title}} </a>
+              {%endfor%}
+            </div>
+
+
         </div>
         <hr>
       {%endfor%}
         
         <!-- Pager -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+        <div class="clearfix pagger-botton">
+          <a class="btn btn-primary float-right" href="#">پست های قدیمی تر &larr;</a>
         </div>
       </div>
     </div>

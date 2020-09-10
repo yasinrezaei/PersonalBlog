@@ -1,0 +1,55 @@
+{%extends 'blog/base.html'%}
+{%load static%}
+{%block main%}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{%static 'blog/img/home-bg.jpg' %}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>تکنوفا</h1>
+            <span class="subheading">تازه های تکنولوژی به زبان فارسی</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+      {%for article in category.articles.all%}
+        <div class="post-preview">
+          <a href="{%url 'blog:detail' article.slug%}">
+            <h2 class="post-title">
+              {{article.title}}
+            </h2>
+            <h3 class="post-subtitle">
+              {{article.description|truncatewords:30}}
+            </h3>
+          </a>
+          <p class="post-meta">نوشته شده توسط
+            <a href="#">یاسین</a>
+            {{article.jpublish}}</p>
+            <div>
+              {%for cat in article.category_published.all%}
+                    <p>#{{cat.title}}</p> 
+              {%endfor%}
+            </div>
+
+
+        </div>
+        <hr>
+      {%endfor%}
+        
+        <!-- Pager -->
+        <div class="clearfix pagger-botton">
+          <a class="btn btn-primary float-right" href="#">پست های قدیمی تر &larr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+{%endblock%}
