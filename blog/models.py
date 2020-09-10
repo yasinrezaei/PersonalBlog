@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from extensions.utils import jalali_converter
 
 class Writer(models.Model):
     STATUS_CHOICES=(
@@ -56,6 +57,10 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+    def jpublish(self):
+        return jalali_converter(self.publish)
+
+    jpublish.short_description="زمان انتشار"
 
 
 
